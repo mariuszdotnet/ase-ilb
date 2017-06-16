@@ -1,0 +1,3 @@
+# Ignore local setting files
+azuredeploy.local.ps1
+azuredeploy.parameters.local.json

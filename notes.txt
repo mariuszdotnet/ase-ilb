@@ -4,3 +4,9 @@ https://docs.microsoft.com/en-us/azure/app-service-web/app-service-environment-w
 # ASE ILB ARM Template Source 
 https://azure.microsoft.com/en-us/resources/templates/201-web-app-ase-ilb-create/
 https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-create
+
+# ASE Defalut SSL Template Source
+https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl
+
+# Cert Password
+password
