@@ -19,30 +19,6 @@
         },
         "dnsSuffix": {
             "value": "changemetoyourcustominternaldomain.com"
-        },
-        "frontEndSize": {
-            "value": "Medium"
-        },
-        "frontEndCount": {
-            "value": 2
-        },
-        "workerPoolOneInstanceSize": {
-            "value": "Small"
-        },
-        "workerPoolOneInstanceCount": {
-            "value": 2
-        },
-        "workerPoolTwoInstanceSize": {
-            "value": "Small"
-        },
-        "workerPoolTwoInstanceCount": {
-            "value": 0
-        },
-        "workerPoolThreeInstanceSize": {
-            "value": "Small"
-        },
-        "workerPoolThreeInstanceCount": {
-            "value": 0
         }
     }
 }
