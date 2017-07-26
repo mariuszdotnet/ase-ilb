@@ -10,3 +10,6 @@ https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-
 
 # Cert Password
 password
+
+# Custom Domain
+aseilb.com

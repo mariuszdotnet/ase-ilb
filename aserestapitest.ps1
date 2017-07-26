@@ -71,6 +71,8 @@ catch {$_.Exception.Response }
 
 Write-Output $(ConvertTo-Json $response.properties)
 
-# Check if we get a 500
+# Check if we get a 500 or 200
 $response.StatusCode.value__
+# Check the Healthy propoerty of the ASE, however there is about 30 min. lag when this flag is flipped from true/false 
+# based on my testing comparing to the actual REST call vs admin action on ASE api
 $response.properties.environmentIsHealthy
