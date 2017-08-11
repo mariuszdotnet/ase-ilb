@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appServicePlanName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the App Service plan to use for hosting the web app."
+      }
+    },
+    "appServiceEnvironmentName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the App Service Environment where the app service plan will be created."
+      }
+    },
+    "existingAseLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "Set this to the same location as the App Service Environment"
+      }
+    },
+    "workerSize": {
+      "type": "string"
+    },
+    "workerSizeId": {
+      "type": "string"
+    },
+    "numberOfWorkers": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-09-01",
+      "name": "[parameters('appServicePlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[parameters('existingAseLocation')]",
+      "kind": "",
+      "properties": {
+        "name": "[parameters('appServicePlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeID": "[parameters('workerSizeID')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "reserved": false,
+        "perSiteScaling": false,
+        "hostingEnvironmentProfile": {
+          "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+        }
+      },
+      "sku": {
+        "name": "[concat('I',parameters('numberOfWorkers'))]",
+        "tier": "Isolated",
+        "size": "[concat('I',parameters('numberOfWorkers'))]",
+        "family": "I",
+        "capacity": "[parameters('numberOfWorkers')]"
+      }
+    }
+  ]
+}
