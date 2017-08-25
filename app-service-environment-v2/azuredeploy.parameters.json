@@ -3,22 +3,25 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "aseName": {
-            "value": "changeme"
+            "value": "ASEv2"
         },
-        "aseLocation": {
-            "value": "East US 2"
-        },
-        "existingVnetResourceId": {
-            "value": "/subscriptions/changeme/resourceGroups/changeme/providers/Microsoft.Network/virtualNetworks/changeme"
-        },
+      "aseLocation": {
+        "value": "East US 2"
+      },
+      "existingVNETRG": {
+        "value": "ASEv2"
+      },
+      "existingVnetName": {
+        "value": "ASEv2-VNET"
+      },
         "subnetName": {
-            "value": "changeme"
+            "value": "ASE"
         },
         "internalLoadBalancingMode": {
             "value": 3
         },
         "dnsSuffix": {
-            "value": "changemetoyourcustominternaldomain.com"
+            "value": "azureminilab.com"
         }
     }
 }
