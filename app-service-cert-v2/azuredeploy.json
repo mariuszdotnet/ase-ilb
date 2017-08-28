@@ -1,0 +1,80 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"appServiceEnvironmentName": {
+			"type": "string",
+			"metadata": {
+				"description": "App Service Environment Name"
+			}
+		},
+		"appServiceEnvironmentRG": {
+			"type": "string",
+			"metadata": {
+				"description": "App Service Environment RG name."
+			}
+		},
+		"existingAseLocation": {
+			"type": "string",
+			"metadata": {
+				"description": "Set this to the same location as the App Service Environment defined in appServiceEnvironmentName."
+			}
+		},
+		"existingKeyVaultName": {
+			"type": "string",
+			"metadata": {
+				"description": "Existing Key Vault Name"
+			}
+		},
+		"existingKeyVaultRG": {
+			"type": "string",
+			"metadata": {
+				"description": "Existing Key Vault Resource Group"
+			}
+		},
+
+		"certificateName": {
+			"type": "string",
+			"metadata": {
+				"description": "Name of the certificate in the KeyVault. Same name will be used to upload to ASE"
+			}
+		}
+	},
+	"variables": {
+		"existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
+		"existingAseID": "[resourceId(parameters('appServiceEnvironmentRG'),'Microsoft.KeyVault/vaults', parameters('appServiceEnvironmentName'))]"
+	},
+	"resources": [
+		{
+			"apiVersion": "2016-03-01",
+			"type": "Microsoft.Web/certificates",
+			"name": "[parameters('certificateName')]",
+			"location": "[parameters('existingAseLocation')]",
+			"properties": {
+				"keyVaultId": "[variables('existingKeyVaultID')]",
+				"keyVaultSecretName": "[parameters('certificateName')]",
+				"hostingEnvironmentProfile": {
+					"id": "[variables('existingAseID')]"
+				}
+			}
+		},
+		{
+			"apiVersion": "2015-08-01",
+			"type": "Microsoft.Web/hostingEnvironments",
+			"name": "[parameters('appServiceEnvironmentName')]",
+			"location": "[parameters('existingAseLocation')]",
+			"properties": {
+				"clusterSettings": [
+					{
+						"name": "DefaultSslCertificateThumbprint",
+						"value": "[reference(resourceId('Microsoft.Web/certificates', parameters('certificateName'))).Thumbprint]"
+                  
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat('Microsoft.Web/certificates/',parameters('certificateName'))]"
+			]
+		}
+	]
+}

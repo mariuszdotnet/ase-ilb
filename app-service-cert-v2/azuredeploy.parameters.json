@@ -1,0 +1,26 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appServiceEnvironmentName": {
+      "value": "changeme"
+    },
+    "existingAseLocation": {
+      "value": "changeme"
+    },
+    "appServiceEnvironmentRG": {
+    "value": "App Service Environment RG name."
+          },
+ 
+    "existingKeyVaultName": {
+        "value": "Existing Key Vault Name"
+    },
+    "existingKeyVaultRG": {
+        "value": "Existing Key Vault Resource Group"
+    },
+
+    "certificateName": {
+      "value": "secret name of the certificate in Key Vault"
+    }
+  }
+}

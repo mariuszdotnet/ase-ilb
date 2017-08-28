@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "aseName": {
-            "value": "ASEv2"
+            "value": "AzureminilabASEv2"
         },
       "aseLocation": {
         "value": "East US 2"
