@@ -3,24 +3,24 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServiceEnvironmentName": {
-      "value": "changeme"
+      "value": "AzureminilabASEv2"
     },
     "existingAseLocation": {
-      "value": "changeme"
+      "value": "East US 2"
     },
     "appServiceEnvironmentRG": {
-    "value": "App Service Environment RG name."
-          },
- 
+      "value": "ASEv2"
+    },
+
     "existingKeyVaultName": {
-        "value": "Existing Key Vault Name"
+      "value": "ASEv2-Keyvault"
     },
     "existingKeyVaultRG": {
-        "value": "Existing Key Vault Resource Group"
+      "value": "ASEv2"
     },
 
     "certificateName": {
-      "value": "secret name of the certificate in Key Vault"
+      "value": "azureminilabcert"
     }
   }
 }
