@@ -40,10 +40,10 @@
 			}
 		}
 	},
-	"variables": {
-		"existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
-		"existingAseID": "[resourceId(parameters('appServiceEnvironmentRG'),'Microsoft.KeyVault/vaults', parameters('appServiceEnvironmentName'))]"
-	},
+  "variables": {
+    "existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
+    "existingAseID": "[resourceId(parameters('appServiceEnvironmentRG'),'Microsoft.Web/hostingEnvironments', parameters('appServiceEnvironmentName'))]"
+  },
 	"resources": [
 		{
 			"apiVersion": "2016-03-01",
