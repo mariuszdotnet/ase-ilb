@@ -5,18 +5,30 @@
     "appServicePlanName": {
       "value": "ASEv2plan"
     },
-          "appServiceEnvironmentName": {
-        "value": "AzureminilabASEv2"
-      },
-      "existingAseLocation": {
-        "value": "East US 2"
-      },
-      "pricingTier": {
-        "value": "1"
-      },
+    "appServicePlanRG": {
+      "value": "ASEv2"
+    },
+    "appServiceEnvironmentName": {
+      "value": "AzureminilabASEv2"
+    },
+    "appServiceEnvironmentRG": {
+      "value": "ASEv2"
+    },
+    "existingAseLocation": {
+      "value": "East US 2"
+    },
+    "siteName": {
+      "value": "www"
+    },
 
-      "capacity": {
-        "value": 1
-      }
+    "existingKeyVaultName": {
+      "value": "ASEv2-Keyvault"
+    },
+    "existingKeyVaultRG": {
+      "value": "ASEv2"
+    },
+    "certificateName": {
+      "value": "azureminilabcert"
     }
+  }
   }

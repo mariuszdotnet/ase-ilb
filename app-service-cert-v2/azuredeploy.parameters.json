@@ -20,7 +20,7 @@
     },
 
     "certificateName": {
-      "value": "azureminilabcert"
+      "value": "azureminilab-cert-asev2"
     }
   }
 }
