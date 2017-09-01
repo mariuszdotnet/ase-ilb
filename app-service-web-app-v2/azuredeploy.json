@@ -51,7 +51,12 @@
         "description": "Existing Key Vault Resource Group"
       }
     },
-
+    "fqdn": {
+      "type": "string",
+      "metadata": {
+        "description": "fqdn for the web app"
+      }
+    },
     "certificateName": {
       "type": "string",
       "metadata": {
@@ -64,6 +69,7 @@
   "variables": {
     "existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
     "existingAppServicePlanID": "[resourceId(parameters('appServicePlanRG'),'Microsoft.Web/serverfarms',parameters('appServicePlanName'))]",
+    "webappname": "[concat(parameters('siteName'),'.',parameters('fqdn'))]",
     "existingAseID": "[resourceId(parameters('appServiceEnvironmentRG'),'Microsoft.Web/hostingEnvironments', parameters('appServiceEnvironmentName'))]"
   },
   "resources": [

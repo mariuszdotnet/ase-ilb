@@ -20,7 +20,6 @@
     "siteName": {
       "value": "asev2webapp"
     },
-
     "existingKeyVaultName": {
       "value": "ASEv2-Keyvault"
     },
