@@ -82,14 +82,18 @@
       "name": "[parameters('siteName')]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('existingAseLocation')]",
+      "dependsOn": [
+        "[resourceID('Microsoft.Web/certificates', parameters('certificateName'))]" 
+      ],
       "properties": {
         "name": "[parameters('siteName')]",
         "hostNameSslStates": [
           {
             "name": "[parameters('siteName')]",
-            "sslState": 1,
+            "sslState": "Disabled",
             "thumbprint": "[reference(resourceId('Microsoft.Web/certificates', parameters('certificateName'))).Thumbprint]",
-            "toUpdate": "true"
+            "toUpdate": "true",
+            "hostType": "Repository"
           }
         ],
 

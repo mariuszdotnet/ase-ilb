@@ -1,11 +1,11 @@
 ﻿# Variables that need to be set
 
 # The subscriptionId
-$subscriptionId = '5cc5fbe7-51cc-4492-ad12-f923efbb9ade' #Subscription ID
-$KeyVaultName = "ASEv2-Keyvault"  #Key Vault Name
+$subscriptionId = 'SUBSCRIPTION_ID' #Subscription ID
+$KeyVaultName = "KEY VAULT_NAME"  #Key Vault Name
 $pfxFilePath = "PFX_CERTIFICATE_FILE_PATH" # Change this path 
 $pwd = "PFX_CERTIFICATE_PASSWORD" # Change this password 
-$KeyVaultSecretName="azureminilab_cert"     #change to set the name of the secret
+$KeyVaultSecretName="CERTIFICATE_NAME"     #change to set the name of the secret
 
 
 $flag = [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable 

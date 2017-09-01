@@ -18,7 +18,7 @@
       "value": "East US 2"
     },
     "siteName": {
-      "value": "www"
+      "value": "asev2webapp"
     },
 
     "existingKeyVaultName": {
@@ -28,7 +28,7 @@
       "value": "ASEv2"
     },
     "certificateName": {
-      "value": "azureminilabcert"
+      "value": "azureminilab-web-cert"
     }
   }
   }

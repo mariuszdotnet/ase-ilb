@@ -3,13 +3,13 @@
 # The subscriptionId
 $subscriptionId = '5cc5fbe7-51cc-4492-ad12-f923efbb9ade'
 # Root path to script, template and parameters.  All have to be in the same folder.
-$rootPath = 'C:\Users\nataliak\Source\Repos\ase-ilb\app-service-plan-v2' # Replace with $PSScriptRoot if you want to run it as a script; EXAMPLE: $rootPath = 'C:\Users\makolo\Documents\GitHub\azure-vmss-templates\vm-simple-rhel'
+$rootPath = 'C:\Users\nataliak\Source\Repos\ase-ilb\app-service-web-app-v2' # Replace with $PSScriptRoot if you want to run it as a script; EXAMPLE: $rootPath = 'C:\Users\makolo\Documents\GitHub\azure-vmss-templates\vm-simple-rhel'
 # Name of the resource group
 $resourceGroupName = 'ASEv2'
 # Resource Group Location 
 $resourceGroupLocation = 'East US 2' # Run <Get-AzureLocation> to find out azure locations; EXAMPLE: 'East US 2'
 # Name of the deployment
-$deploymentName = 'ASEv2plan'
+$deploymentName = 'ASEv2web'
 
 #Login-AzureRmAccount
 
