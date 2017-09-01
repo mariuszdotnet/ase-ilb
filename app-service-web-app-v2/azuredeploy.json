@@ -8,7 +8,7 @@
         "description": "The name of the App Service plan to use for hosting the web app."
       }
     },
-    "appServicePlanRG":{
+    "appServicePlanRG": {
       "type": "string",
       "metadata": {
         "description": "The App Service Plan RG"
@@ -83,7 +83,7 @@
       "type": "Microsoft.Web/sites",
       "location": "[parameters('existingAseLocation')]",
       "dependsOn": [
-        "[resourceID('Microsoft.Web/certificates', parameters('certificateName'))]" 
+        "[resourceID('Microsoft.Web/certificates', parameters('certificateName'))]"
       ],
       "properties": {
         "name": "[parameters('siteName')]",
@@ -101,7 +101,24 @@
         "hostingEnvironmentProfile": {
           "id": "[variables('existingAseID')]"
         }
-      }
+      },
+      "resources": [
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "config",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+          ],
+          "properties": {
+            "cors": {
+              "allowedOrigins": [
+                "*"
+              ]
+            }
+          }
+        }
+      ]
     }
   ]
 }
