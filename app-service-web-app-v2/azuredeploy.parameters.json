@@ -19,15 +19,6 @@
     },
     "siteName": {
       "value": "asev2webapp"
-    },
-    "existingKeyVaultName": {
-      "value": "ASEv2-Keyvault"
-    },
-    "existingKeyVaultRG": {
-      "value": "ASEv2"
-    },
-    "certificateName": {
-      "value": "azureminilab-web-cert"
     }
   }
   }

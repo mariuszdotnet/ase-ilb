@@ -37,72 +37,24 @@
       "metadata": {
         "description": "The name of the web app that you wish to create."
       }
-    },
-
-    "existingKeyVaultName": {
-      "type": "string",
-      "metadata": {
-        "description": "Existing Key Vault Name"
-      }
-    },
-    "existingKeyVaultRG": {
-      "type": "string",
-      "metadata": {
-        "description": "Existing Key Vault Resource Group"
-      }
-    },
-    "fqdn": {
-      "type": "string",
-      "metadata": {
-        "description": "fqdn for the web app"
-      }
-    },
-    "certificateName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the certificate in the KeyVault. Same name will be used to upload to WebApp"
-      }
     }
 
   },
 
   "variables": {
-    "existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
     "existingAppServicePlanID": "[resourceId(parameters('appServicePlanRG'),'Microsoft.Web/serverfarms',parameters('appServicePlanName'))]",
     "webappname": "[concat(parameters('siteName'),'.',parameters('fqdn'))]",
     "existingAseID": "[resourceId(parameters('appServiceEnvironmentRG'),'Microsoft.Web/hostingEnvironments', parameters('appServiceEnvironmentName'))]"
   },
   "resources": [
     {
-      "apiVersion": "2016-03-01",
-      "type": "Microsoft.Web/certificates",
-      "name": "[parameters('certificateName')]",
-      "location": "[parameters('existingAseLocation')]",
-      "properties": {
-        "keyVaultId": "[variables('existingKeyVaultID')]",
-        "keyVaultSecretName": "[parameters('certificateName')]"
-      }
-    },
-    {
       "apiVersion": "2015-08-01",
       "name": "[parameters('siteName')]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('existingAseLocation')]",
-      "dependsOn": [
-        "[resourceID('Microsoft.Web/certificates', parameters('certificateName'))]"
-      ],
+      "dependsOn": [],
       "properties": {
         "name": "[parameters('siteName')]",
-        "hostNameSslStates": [
-          {
-            "name": "[parameters('siteName')]",
-            "sslState": "Disabled",
-            "thumbprint": "[reference(resourceId('Microsoft.Web/certificates', parameters('certificateName'))).Thumbprint]",
-            "toUpdate": "true",
-            "hostType": "Repository"
-          }
-        ],
-
         "serverFarmId": "[variables('existingAppServicePlanID')]",
         "hostingEnvironmentProfile": {
           "id": "[variables('existingAseID')]"
