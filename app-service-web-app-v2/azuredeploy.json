@@ -43,7 +43,6 @@
 
   "variables": {
     "existingAppServicePlanID": "[resourceId(parameters('appServicePlanRG'),'Microsoft.Web/serverfarms',parameters('appServicePlanName'))]",
-    "webappname": "[concat(parameters('siteName'),'.',parameters('fqdn'))]",
     "existingAseID": "[resourceId(parameters('appServiceEnvironmentRG'),'Microsoft.Web/hostingEnvironments', parameters('appServiceEnvironmentName'))]"
   },
   "resources": [
