@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appServicePlanName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the App Service plan to use for hosting the web app."
+      }
+    },
+    "appServicePlanRG": {
+      "type": "string",
+      "metadata": {
+        "description": "The App Service Plan RG"
+      }
+    },
+    "existingKeyVaultName": {
+      "type": "string",
+      "metadata": {
+        "description": "Existing Key Vault Name"
+      }
+    },
+    "existingKeyVaultRG": {
+      "type": "string",
+      "metadata": {
+        "description": "Existing Key Vault Resource Group"
+      }
+    },
+
+    "certificateName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the certificate in the KeyVault. Same name will be used to upload to WebApp"
+      }
+    }
+
+  },
+
+  "variables": {
+    "existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
+    "existingAppServicePlanID": "[resourceId(parameters('appServicePlanRG'),'Microsoft.Web/serverfarms',parameters('appServicePlanName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-03-01",
+      "type": "Microsoft.Web/certificates",
+      "name": "[parameters('certificateName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "keyVaultId": "[variables('existingKeyVaultID')]",
+        "keyVaultSecretName": "[parameters('certificateName')]",
+        "serverFarmId": "[variables('existingAppServicePlanID')]"
+      }
+    }
+  ]
+}

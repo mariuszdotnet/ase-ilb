@@ -1,0 +1,18 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appServicePlanName": {
+      "value": "ASEv2plan"
+    },
+    "appServicePlanRG": {
+      "value": "ASEv2"
+    },
+    "appServiceEnvironmentName": {
+      "value": "AzureminilabASEv2"
+    },
+    "appServiceEnvironmentRG": {
+      "value": "ASEv2"
+    }
+  }
+  }
