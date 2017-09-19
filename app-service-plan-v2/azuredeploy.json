@@ -8,6 +8,12 @@
         "description": "The name of the App Service plan to use for hosting the web app."
       }
     },
+    "appServiceEnvironmentRG": {
+      "type": "string",
+      "metadata": {
+        "description": "The Resource Group of App Service Environment"
+      }
+    },
     "appServiceEnvironmentName": {
       "type": "string",
       "metadata": {
@@ -41,6 +47,10 @@
     }
 
   },
+  "variables": {
+    "existingAseID": "[resourceId(parameters('appServiceEnvironmentRG'),'Microsoft.Web/hostingEnvironments', parameters('appServiceEnvironmentName'))]"
+  },
+
   "resources": [
     {
       "apiVersion": "2015-08-01",
@@ -50,7 +60,7 @@
       "properties": {
         "name": "[parameters('appServicePlanName')]",
         "hostingEnvironmentProfile": {
-          "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+          "id": "[variables('existingAseID')]"
         }
       },
       "sku": {

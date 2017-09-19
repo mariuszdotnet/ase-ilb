@@ -3,20 +3,24 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServicePlanName": {
-      "value": "ASEv2plan"
+      "value": "ASEv2plan34"
     },
-          "appServiceEnvironmentName": {
-        "value": "AzureminilabASEv2"
-      },
-      "existingAseLocation": {
-        "value": "East US 2"
-      },
-      "pricingTier": {
-        "value": "1"
-      },
+    "appServiceEnvironmentName": {
+      "value": "AzureminilabASEv2"
+    },
 
-      "capacity": {
-        "value": 1
-      }
+    "appServiceEnvironmentRG": {
+      "value": "ASEv2"
+    },
+    "existingAseLocation": {
+      "value": "East US 2"
+    },
+    "pricingTier": {
+      "value": "1"
+    },
+
+    "capacity": {
+      "value": 1
     }
+  }
   }
