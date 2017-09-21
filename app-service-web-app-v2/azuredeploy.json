@@ -37,6 +37,13 @@
       "metadata": {
         "description": "The name of the web app that you wish to create."
       }
+    },
+    "cors": {
+      "type": "array",
+      "defaultValue": ["http://bing.com", "http://google.com", "http://yahoo.com"],
+      "metadata": {
+        "description": "Cross-Origin Resource Sharing (CORS) allows JavaScript code running in a browser on an external host to interact with your backend."
+      }
     }
 
   },
@@ -68,11 +75,11 @@
             "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
           ],
           "properties": {
-            "cors": {
-              "allowedOrigins": [
-                "*"
-              ]
-            }
+              "copy": [{
+                "name": "allowedOrigins",
+                "count": "length(parameters('cors'))]",
+                "input": "[parameters('cors')[copyIndex('allowedOrigins')]]"
+            }]
           }
         }
       ]

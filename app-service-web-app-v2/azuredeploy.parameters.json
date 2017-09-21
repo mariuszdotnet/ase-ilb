@@ -18,7 +18,13 @@
       "value": "East US 2"
     },
     "siteName": {
-      "value": "asev2webapp"
-    }
+      "value": "mktest"
+    },
+    "cors":{
+      "value": [
+        "https://bing.com",
+        "http://google.com"
+      ]
+  }
   }
   }
