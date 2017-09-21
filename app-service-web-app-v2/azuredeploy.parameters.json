@@ -19,12 +19,6 @@
     },
     "siteName": {
       "value": "mktest"
-    },
-    "cors":{
-      "value": [
-        "https://bing.com",
-        "http://google.com"
-      ]
-  }
+    }
   }
   }
