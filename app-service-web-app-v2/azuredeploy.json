@@ -37,6 +37,12 @@
       "metadata": {
         "description": "The names of the web app that you wish to create."
       }
+    },
+    "corsURL": {
+      "type": "string",
+      "metadata": {
+        "description":  "CORS URL value to be set in Web app config"
+      }
     }
   },
 
@@ -72,7 +78,7 @@
           ],
           "properties": {
             "cors": {
-              "allowedOrigins": "[parameters('siteName')[copyIndex()]]"
+              "allowedOrigins": "[parameters('corsURL')]"
             }
           }
         }

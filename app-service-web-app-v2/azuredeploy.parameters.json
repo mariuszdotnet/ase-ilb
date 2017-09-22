@@ -23,7 +23,9 @@
         "nktest",
         "asetest"
       ]
-        
+    },
+    "corsURL": {
+      "value": "http://bing.com"
     }
   }
   }
