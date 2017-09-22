@@ -33,9 +33,9 @@
       }
     },
     "siteName": {
-      "type": "string",
+      "type": "array",
       "metadata": {
-        "description": "The name of the web app that you wish to create."
+        "description": "The names of the web app that you wish to create."
       }
     }
   },
@@ -47,12 +47,16 @@
   "resources": [
     {
       "apiVersion": "2015-08-01",
-      "name": "[parameters('siteName')]",
+      "name": "[parameters('siteName')[copyIndex()]]",
       "type": "Microsoft.Web/sites",
-      "location": "[parameters('existingAseLocation')]",
+      "copy": {
+        "name": "siteloop",
+        "count": "[length(parameters('siteName'))]"
+      },
+            "location": "[parameters('existingAseLocation')]",
       "dependsOn": [],
       "properties": {
-        "name": "[parameters('siteName')]",
+        "name": "[parameters('siteName')[copyIndex()]]",
         "serverFarmId": "[variables('existingAppServicePlanID')]",
         "hostingEnvironmentProfile": {
           "id": "[variables('existingAseID')]"
@@ -64,14 +68,11 @@
           "name": "web",
           "type": "config",
           "dependsOn": [
-            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+            "[resourceId('Microsoft.Web/Sites', parameters('siteName')[copyIndex()])]"
           ],
           "properties": {
             "cors": {
-              "allowedOrigins": [
-                "http://testurlone.com",
-                "http://testurltwo.com"
-              ]
+              "allowedOrigins": "[parameters('siteName')[copyIndex()]]"
             }
           }
         }

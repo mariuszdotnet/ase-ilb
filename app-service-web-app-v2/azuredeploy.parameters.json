@@ -18,7 +18,12 @@
       "value": "East US 2"
     },
     "siteName": {
-      "value": "mktest"
+      "value": [
+        "mktest",
+        "nktest",
+        "asetest"
+      ]
+        
     }
   }
   }
