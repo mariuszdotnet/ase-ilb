@@ -24,8 +24,12 @@
         "asetest"
       ]
     },
-    "corsURL": {
-      "value": "http://bing.com"
-    }
+    "corsURLs": {
+      "value": [
+        "http://testurlone.com",
+        "http://testurltwo.com",
+        "http://testurlthree.com"
+      ]
+   }
   }
   }
