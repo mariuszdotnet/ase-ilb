@@ -3,16 +3,19 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServicePlanName": {
-      "value": "ASEv2plan"
+      "value": ""
     },
     "appServicePlanRG": {
-      "value": "ASEv2"
+      "value": ""
     },
-    "appServiceEnvironmentName": {
-      "value": "AzureminilabASEv2"
+    "existingKeyVaultName": {
+      "value": ""
     },
-    "appServiceEnvironmentRG": {
-      "value": "ASEv2"
+    "existingKeyVaultRG": {
+      "value": ""
+    },
+    "certificateName": {
+      "value": ""
     }
   }
   }
