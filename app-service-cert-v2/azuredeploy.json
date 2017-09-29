@@ -8,12 +8,6 @@
 				"description": "App Service Environment Name"
 			}
 		},
-		"appServiceEnvironmentRG": {
-			"type": "string",
-			"metadata": {
-				"description": "App Service Environment RG name."
-			}
-		},
 		"existingAseLocation": {
 			"type": "string",
 			"metadata": {
@@ -33,26 +27,41 @@
 			}
 		},
 
-		"certificateName": {
+		"keyVaultSecretName": {
 			"type": "string",
 			"metadata": {
-				"description": "Name of the certificate in the KeyVault. Same name will be used to upload to ASE"
+				"description": "Name of the secret for the certificate in the KeyVault."
+			}
+		},
+		"certificateNamePrefix": {
+			"type": "string",
+			"metadata": {
+				"description": "Name prefix for the certifate resource."
+			}
+		},
+		"certificateThumbprint": {
+			"type": "string",
+			"metadata": {
+				"description": "The certificate thumbprint."
 			}
 		}
 	},
   "variables": {
-    "existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
-    "existingAseID": "[resourceId(parameters('appServiceEnvironmentRG'),'Microsoft.Web/hostingEnvironments', parameters('appServiceEnvironmentName'))]"
+	"existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
+	"certificateName": "[concat(parameters('certificateNamePrefix'),'_',parameters('appServiceEnvironmentName'),'_InternalLoadBalancingASE')]"
   },
 	"resources": [
 		{
 			"apiVersion": "2016-03-01",
 			"type": "Microsoft.Web/certificates",
-			"name": "[parameters('certificateName')]",
+			"name": "[variables('certificateName')]",
 			"location": "[parameters('existingAseLocation')]",
 			"properties": {
 				"keyVaultId": "[variables('existingKeyVaultID')]",
-				"keyVaultSecretName": "[parameters('certificateName')]"
+				"keyVaultSecretName": "[parameters('keyVaultSecretName')]",
+				"hostingEnvironmentProfile": {
+					"id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+				}
 			}
 		},
 		{
@@ -64,13 +73,13 @@
 				"clusterSettings": [
 					{
 						"name": "DefaultSslCertificateThumbprint",
-						"value": "[reference(resourceId('Microsoft.Web/certificates', parameters('certificateName'))).Thumbprint]"
+						"value": "[parameters('certificateThumbprint')]"
                   
 					}
 				]
 			},
 			"dependsOn": [
-				"[concat('Microsoft.Web/certificates/',parameters('certificateName'))]"
+				"[concat('Microsoft.Web/certificates/',variables('certificateName'))]"
 			]
 		}
 	]
