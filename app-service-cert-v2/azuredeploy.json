@@ -36,19 +36,13 @@
 		"certificateNamePrefix": {
 			"type": "string",
 			"metadata": {
-				"description": "Name prefix for the certifate resource."
-			}
-		},
-		"certificateThumbprint": {
-			"type": "string",
-			"metadata": {
-				"description": "The certificate thumbprint."
+				"description": "Name prefix for the certificate resource."
 			}
 		}
 	},
   "variables": {
-	"existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
-	"certificateName": "[concat(parameters('certificateNamePrefix'),'_',parameters('appServiceEnvironmentName'),'_InternalLoadBalancingASE')]"
+    "existingKeyVaultID": "[resourceId(parameters('existingKeyVaultRG'),'Microsoft.KeyVault/vaults', parameters('existingKeyVaultName'))]",
+    "certificateName": "[concat(parameters('certificateNamePrefix'),'_',parameters('appServiceEnvironmentName'),'_InternalLoadBalancingASE')]"
   },
 	"resources": [
 		{
@@ -73,7 +67,7 @@
 				"clusterSettings": [
 					{
 						"name": "DefaultSslCertificateThumbprint",
-						"value": "[parameters('certificateThumbprint')]"
+						"value": "[reference(resourceId('Microsoft.Web/certificates', variables('certificateName')), providers('Microsoft.Web', 'certificates').apiVersions[0]).thumbprint]"
 					}
 				]
 			},
