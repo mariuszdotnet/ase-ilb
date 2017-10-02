@@ -54,7 +54,11 @@
 		{
 			"apiVersion": "2016-03-01",
 			"type": "Microsoft.Web/certificates",
+<<<<<<< HEAD
 			"name": "[variables('certificateName')]",
+=======
+			"name": "mycert_mkasev2_InternalLoadBalancingASE",
+>>>>>>> d10f6009de74b8d18ebca756b19aede67059d421
 			"location": "[parameters('existingAseLocation')]",
 			"properties": {
 				"keyVaultId": "[variables('existingKeyVaultID')]",
@@ -78,7 +82,11 @@
 				]
 			},
 			"dependsOn": [
+<<<<<<< HEAD
 				"[concat('Microsoft.Web/certificates/',variables('certificateName'))]"
+=======
+				"[concat('Microsoft.Web/certificates/','mycert_mkasev2_InternalLoadBalancingASE')]"
+>>>>>>> d10f6009de74b8d18ebca756b19aede67059d421
 			]
 		}
 	]
