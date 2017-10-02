@@ -9,19 +9,19 @@
       "value": "East US 2"
     },
     "existingKeyVaultName": {
-      "value": "ase-key-vault"
+      "value": "ase-kv"
     },
     "existingKeyVaultRG": {
-      "value": "ase-ilb-rg"
+      "value": "asev2-rg"
     },
     "keyVaultSecretName": {
-      "value": "ase-v2-cert"
+      "value": "asecert"
     },
     "certificateNamePrefix": {
-      "value": "myase"
+      "value": "mk"
     },
     "certificateThumbprint":{
-      "value": "04F766B851C5B949C67117ACA2C8F3A2137DF21A"
+      "value": "479BB6A66EB50AEEA4248CB4216433A01720D747"
     }
   }
 }
