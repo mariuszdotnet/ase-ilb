@@ -3,22 +3,22 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServiceEnvironmentName": {
-      "value": "AzureminilabASEv2"
+      "value": "mkasev2"
     },
     "existingAseLocation": {
       "value": "East US 2"
     },
     "existingKeyVaultName": {
-      "value": "ASEv2-Keyvault"
+      "value": "ase-kv"
     },
     "existingKeyVaultRG": {
-      "value": "ASEv2"
+      "value": "asev2-rg"
     },
     "keyVaultSecretName": {
-      "value": "asev2cert"
+      "value": "ase-cert"
     },
     "certificateNamePrefix": {
-      "value": "nk"
+      "value": "mk"
     }
   }
 }
